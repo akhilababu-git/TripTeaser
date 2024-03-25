@@ -1,3 +1,4 @@
+<%@include file="Head.jsp" %>
 <%-- 
     Document   : Myprofile
     Created on : 11 Jan, 2024, 11:15:24 PM
@@ -41,3 +42,5 @@
        
     </body>
 </html>
+
+<%@include file="Foot.jsp" %>

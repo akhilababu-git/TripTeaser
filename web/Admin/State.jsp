@@ -1,3 +1,4 @@
+<%@include file="Head.jsp" %>
 <%-- 
     Document   : State
     Created on : 2 Feb, 2024, 9:17:31 PM
@@ -76,3 +77,4 @@
         
     </body>
 </html>
+<%@include file="Foot.jsp" %>

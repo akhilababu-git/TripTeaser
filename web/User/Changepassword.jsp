@@ -1,3 +1,4 @@
+<%@include file="Head.jsp" %>
 <%-- 
     Document   : Changepassword
     Created on : 11 Jan, 2024, 11:31:59 PM
@@ -70,11 +71,11 @@
                 </tr>
                 <tr>
                     <td>New password</td>
-                    <td><input type="text" name="Npassword"</td>
+                    <td><input type="text" name="Npassword"></td>
                 </tr>
                 <tr>
                     <td>Re_password</td>
-                    <td><input type="text" name="Rpassword"</td>
+                    <td><input type="text" name="Rpassword"></td>
                 </tr>
                  <tr>
                     <td colspan="2" align="center"><input type="submit" name="btn_update" value="Update"></td>
@@ -83,3 +84,4 @@
         </form>
     </body>
 </html>
+<%@include file="Foot.jsp" %>

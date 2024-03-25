@@ -1,3 +1,4 @@
+<%@include file="Head.jsp" %>
 <%--
     Document   : Editprofile
     Created on : 11 Jan, 2024, 11:25:31 PM
@@ -15,7 +16,7 @@
     <body>
         <%
 
-            if (request.getParameter("btn_update") != null);
+            if (request.getParameter("btn_update") != null)
             {
 
                 String Name = request.getParameter("Name");
@@ -40,15 +41,15 @@
             <table border="1" align="center">
                 <tr>
                     <td>Name</td>
-                    <td><input type="text" name="Name" value="<%=rs.getString("user_name")%>"</td>
+                    <td><input type="text" name="Name" value="<%=rs.getString("user_name")%>"></td>
                 </tr>
                 <tr>
                     <td>Contact</td>
-                    <td><input type="text" name="Contact" value="<%=rs.getString("user_contact")%>"</td>
+                    <td><input type="text" name="Contact" value="<%=rs.getString("user_contact")%>"></td>
                 </tr>
                 <tr>
                     <td>Email</td>
-                    <td><input type="text" name="Email"value="<%=rs.getString("user_email")%>"</td>
+                    <td><input type="text" name="Email"value="<%=rs.getString("user_email")%>"></td>
                 </tr>
                 <tr>
                     <td>Address</td>
@@ -61,3 +62,5 @@
         </form>
     </body>
 </html>
+
+<%@include file="Foot.jsp" %>

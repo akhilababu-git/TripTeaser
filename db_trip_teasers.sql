@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 23, 2024 at 10:19 PM
+-- Generation Time: Mar 25, 2024 at 07:30 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -34,6 +34,13 @@ CREATE TABLE `tbl_admin` (
   `admin_password` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `tbl_admin`
+--
+
+INSERT INTO `tbl_admin` (`admin_id`, `admin_name`, `admin_email`, `admin_password`) VALUES
+(1, 'Admin', 'admin@gmail.com', 'admin@123');
+
 -- --------------------------------------------------------
 
 --
@@ -48,17 +55,16 @@ CREATE TABLE `tbl_booking` (
   `booking_leadcount` varchar(50) NOT NULL,
   `booking_amount` varchar(100) NOT NULL,
   `package_id` int(11) NOT NULL,
-  `booking_status` varchar(30) NOT NULL DEFAULT '0'
+  `booking_status` varchar(30) NOT NULL DEFAULT '0',
+  `transportation_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_booking`
 --
 
-INSERT INTO `tbl_booking` (`booking_id`, `booking_date`, `booking_fordate`, `user_id`, `booking_leadcount`, `booking_amount`, `package_id`, `booking_status`) VALUES
-(4, '2024-02-29', '', 1, '10', '1000', 1, '0'),
-(5, '2024-02-29', '2024-02-29', 1, '10', '1000', 1, '0'),
-(6, '2024-02-29', '2024-02-06', 1, '10', '1000', 1, '0');
+INSERT INTO `tbl_booking` (`booking_id`, `booking_date`, `booking_fordate`, `user_id`, `booking_leadcount`, `booking_amount`, `package_id`, `booking_status`, `transportation_id`) VALUES
+(3, '2024-03-25', '2024-04-03', 1, '2', '10000', 1, '2', 1);
 
 -- --------------------------------------------------------
 
@@ -92,7 +98,7 @@ CREATE TABLE `tbl_district` (
 --
 
 INSERT INTO `tbl_district` (`district_id`, `district_name`, `state_id`) VALUES
-(1, 'idukki', 2);
+(1, 'Idukki', 1);
 
 -- --------------------------------------------------------
 
@@ -115,7 +121,7 @@ CREATE TABLE `tbl_package` (
 --
 
 INSERT INTO `tbl_package` (`package_id`, `package_name`, `package_details`, `package_photo`, `package_amount`, `package_days`, `place_id`) VALUES
-(1, 'asdfgtyhjkimjnhbvazxcvbghnjm,', 'ghj,uhjngvcvbnm,mn', 'PackagePhoto_1991.png', 30000, '3', 3);
+(1, 'Golden', 'vsfvfgfvgf', 'PackagePhoto_1684.png', 5000, '10', 1);
 
 -- --------------------------------------------------------
 
@@ -135,10 +141,7 @@ CREATE TABLE `tbl_place` (
 --
 
 INSERT INTO `tbl_place` (`place_id`, `place_name`, `district_id`, `state_id`) VALUES
-(1, 'thodupuzha', 1, 0),
-(2, 'thodupuzha', 1, 0),
-(3, 'thodupuzha', 1, 2),
-(4, 'Kattappana', 1, 2);
+(1, 'Thodupuzha', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -189,7 +192,7 @@ CREATE TABLE `tbl_state` (
 --
 
 INSERT INTO `tbl_state` (`state_id`, `state_name`) VALUES
-(2, 'kerala');
+(1, 'Kerala');
 
 -- --------------------------------------------------------
 
@@ -203,16 +206,32 @@ CREATE TABLE `tbl_transportation` (
   `type_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `tbl_transportation`
+--
+
+INSERT INTO `tbl_transportation` (`transportation_id`, `package_id`, `type_id`) VALUES
+(3, 1, 1),
+(4, 1, 2);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_transportation type`
+-- Table structure for table `tbl_transportationtype`
 --
 
-CREATE TABLE `tbl_transportation type` (
+CREATE TABLE `tbl_transportationtype` (
   `type_id` int(11) NOT NULL,
   `type_name` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_transportationtype`
+--
+
+INSERT INTO `tbl_transportationtype` (`type_id`, `type_name`) VALUES
+(1, 'Flight'),
+(2, 'Bus');
 
 -- --------------------------------------------------------
 
@@ -237,8 +256,7 @@ CREATE TABLE `tbl_user` (
 --
 
 INSERT INTO `tbl_user` (`user_id`, `user_name`, `user_email`, `user_contact`, `user_address`, `place_id`, `user_gender`, `user_photo`, `user_password`) VALUES
-(1, 'Akhila Babu', 'akhila123@gmail.com', '9778135049', 'kjhyut', 7, 'Male', 'UserPhoto_1489.png', 'Akhila@123'),
-(3, 'Anjana Manoj', 'anjana456@gmail.com', '', 'idukki,kattappana', 4, 'Female', 'UserPhoto_2080.png', 'Anjana@456');
+(1, 'Suraj ', 'surajks@gmail.com', '8765432190', 'Thodupuzha', 1, 'Male', 'UserPhoto_2046.png', 'Qwerty@123');
 
 --
 -- Indexes for dumped tables
@@ -305,9 +323,9 @@ ALTER TABLE `tbl_transportation`
   ADD PRIMARY KEY (`transportation_id`);
 
 --
--- Indexes for table `tbl_transportation type`
+-- Indexes for table `tbl_transportationtype`
 --
-ALTER TABLE `tbl_transportation type`
+ALTER TABLE `tbl_transportationtype`
   ADD PRIMARY KEY (`type_id`);
 
 --
@@ -324,13 +342,13 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT for table `tbl_admin`
 --
 ALTER TABLE `tbl_admin`
-  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_booking`
 --
 ALTER TABLE `tbl_booking`
-  MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_complaint`
@@ -348,13 +366,13 @@ ALTER TABLE `tbl_district`
 -- AUTO_INCREMENT for table `tbl_package`
 --
 ALTER TABLE `tbl_package`
-  MODIFY `package_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `package_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_place`
 --
 ALTER TABLE `tbl_place`
-  MODIFY `place_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `place_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_request`
@@ -372,25 +390,25 @@ ALTER TABLE `tbl_review`
 -- AUTO_INCREMENT for table `tbl_state`
 --
 ALTER TABLE `tbl_state`
-  MODIFY `state_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `state_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_transportation`
 --
 ALTER TABLE `tbl_transportation`
-  MODIFY `transportation_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `transportation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `tbl_transportation type`
+-- AUTO_INCREMENT for table `tbl_transportationtype`
 --
-ALTER TABLE `tbl_transportation type`
-  MODIFY `type_id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `tbl_transportationtype`
+  MODIFY `type_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

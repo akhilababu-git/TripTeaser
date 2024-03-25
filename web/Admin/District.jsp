@@ -28,9 +28,10 @@
 
 
     %>
+    <%@include file="Head.jsp" %>
     <body>
         <form method="post">
-            <table border="1" align="center">
+            <table border="1" align="center" >
                 <tr>
                     <td>State</td>
                     <td><select name="sel_state">
@@ -103,3 +104,4 @@
         </table>
     </body>
 </html>
+<%@include file="Foot.jsp" %>           

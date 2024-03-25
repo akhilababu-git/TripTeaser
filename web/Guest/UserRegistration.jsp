@@ -15,8 +15,9 @@
         <title>User Registration</title>
     </head>
     <body>
+        <%@include file="Head.jsp" %>
         <form method="post" enctype="multipart/form-data" action="../Assets/ActionPages/UserUploadAction.jsp">
-            <table border="1" center="align">
+            <table border="1" >
                 <tr>
                     <td>Name</td>
                     <td><input type="text" name="Name"></td>
@@ -107,6 +108,7 @@
                 </tr>
             </table>
         </form>
+                                <%@include file="Foot.jsp" %>
     <script src="../Assets/JQ/jQuery.js"></script>
         <script>
                         function getdistrict(sid)

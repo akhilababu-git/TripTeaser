@@ -1,3 +1,4 @@
+<%@include file="Head.jsp" %>
 <%-- 
     Document   : Place
     Created on : 15 Dec, 2023, 2:13:36 PM
@@ -116,3 +117,4 @@
                         }</script>
     </body>
 </html>
+<%@include file="Foot.jsp" %>

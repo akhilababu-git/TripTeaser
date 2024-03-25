@@ -1,3 +1,4 @@
+<%@include file="Head.jsp" %>
 <%-- 
     Document   : SearchPackage
     Created on : 22 Feb, 2024, 10:00:48 PM
@@ -14,7 +15,7 @@
     </head>
     <body>    
         <form method="post">
-            <table border="1"align ="center">
+            <table border="1" align="center">
                 <tr>
                     <td>District</td>
                     <td>
@@ -59,7 +60,7 @@
                             i++;
                     %>
                     <td>
-                        <table border="1"align="center" width="200" height="300" style="margin:20px">
+                        <table border="1" align="center" width="200"  style="margin:20px">
                             <tr>
                                 <td colspan="2" align='center'><img src='../Assets/Files/Package/<%=rsp.getString("package_photo")%>'width='150' height='150'></td>
                             </tr>
@@ -85,6 +86,7 @@
                                 }
                     %>                        
             </table>
+            
     </body>
 
     <script src="../Assets/JQ/jQuery.js"></script>
@@ -103,3 +105,5 @@
 
 
 </html>
+
+<%@include file="Foot.jsp" %>
